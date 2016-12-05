@@ -61,6 +61,9 @@
         
     }
 }
+-(void)mc_sendBytes:(const uint8_t *)buffer maxLength:(NSUInteger)len{
+    [self.outputStream write:buffer maxLength:len];
+}
 -(void)mc_sendData:(NSData *)data {
     [self.outputStream write:[data bytes] maxLength:[data length]];
 }

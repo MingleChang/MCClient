@@ -35,5 +35,5 @@ typedef NS_ENUM(NSUInteger,MCClientConnectState){
 -(void)mc_connect:(NSString *)host port:(NSInteger)port;
 -(void)mc_disconnect;
 -(void)mc_sendData:(NSData *)data;
-
+-(void)mc_sendBytes:(const uint8_t *)buffer maxLength:(NSUInteger)len;
 @end

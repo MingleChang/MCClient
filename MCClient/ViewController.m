@@ -39,12 +39,20 @@
 
 #pragma mark - MCClient Delegate
 - (void)mc_clientConnectSuccess:(MCClient *)client {
+    char lStr[1024];
+    memset(lStr, 0, 1024);
+    strcat(lStr, "GET / HTTP/1.1\r\n");
+    strcat(lStr, "Host: www.baidu.com\r\n");
+    strcat(lStr, "Content-Type: text/html\r\n");
+    strcat(lStr, "\r\n");
+    [self.client mc_sendBytes:(void *)lStr maxLength:strlen(lStr)];
     
-    NSString *lString= @"GET / HTTP/1.1\r\n";
-    lString = [lString stringByAppendingString:@"Host: www.baidu.com\r\n"];
-    lString = [lString stringByAppendingString:@"Content-Type: text/html\r\n"];
-    lString = [lString stringByAppendingString:@"\r\n"];
-    [self.client mc_sendData:[lString dataUsingEncoding:NSUTF8StringEncoding]];
+    
+//    NSString *lString= @"GET / HTTP/1.1\r\n";
+//    lString = [lString stringByAppendingString:@"Host: www.baidu.com\r\n"];
+//    lString = [lString stringByAppendingString:@"Content-Type: text/html\r\n"];
+//    lString = [lString stringByAppendingString:@"\r\n"];
+//    [self.client mc_sendData:[lString dataUsingEncoding:NSUTF8StringEncoding]];
 }
 
 - (void)mc_clientConnectFailed:(MCClient *)client {
